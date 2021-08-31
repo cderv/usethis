@@ -69,6 +69,8 @@ Adds RStudio files to .Rbuildignore, if project is a package
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -90,9 +92,15 @@ Adds RStudio files to .Rbuildignore, if project is a package
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -106,7 +114,7 @@ Adds RStudio files to .Rbuildignore, if project is a package
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">usethis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1.9000</span>
       </span>
     </div>
 
@@ -148,6 +156,9 @@ Adds RStudio files to .Rbuildignore, if project is a package
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
+      <a href="https://www.tidyverse.org/blog/2020/12/usethis-2-0-0/">usethis 2.0.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">usethis 1.6.0</a>
     </li>
     <li>
@@ -169,7 +180,7 @@ Adds RStudio files to .Rbuildignore, if project is a package
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/usethis/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -203,7 +214,7 @@ instead of <code>use_rstudio()</code>! Both <code>create_*()</code> functions ca
 Project infrastructure to a pre-existing project or package. <code>use_rstudio()</code>
 is mostly for internal use or for those creating a usethis-like package for
 their organization. It does the following in the current project, often after
-executing <code><a href='proj_utils.html'>proj_set(..., force = TRUE)</a></code>:</p><ul>
+executing <code>proj_set(..., force = TRUE)</code>:</p><ul>
 <li><p>Creates an <code>.Rproj</code> file</p></li>
 <li><p>Adds RStudio files to <code>.gitignore</code></p></li>
 <li><p>Adds RStudio files to <code>.Rbuildignore</code>, if project is a package</p></li>
@@ -211,7 +222,7 @@ executing <code><a href='proj_utils.html'>proj_set(..., force = TRUE)</a></code>
 
     </div>
 
-    <pre class="usage"><span class='fu'>use_rstudio</span><span class='op'>(</span>line_ending <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"posix"</span>, <span class='st'>"windows"</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>use_rstudio</span><span class='op'>(</span>line_ending <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"posix"</span>, <span class='st'>"windows"</span><span class='op'>)</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -234,11 +245,11 @@ executing <code><a href='proj_utils.html'>proj_set(..., force = TRUE)</a></code>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://jennybryan.org'>Jennifer Bryan</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://jennybryan.org" class="external-link">Jennifer Bryan</a>, Malcolm Barrett, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -263,6 +274,8 @@ executing <code><a href='proj_utils.html'>proj_set(..., force = TRUE)</a></code>
 </script>
 
 
+
+  
 
   </body>
 </html>

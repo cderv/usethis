@@ -59,10 +59,11 @@ fork-and-cloning. In the
 fork-and-clone case, create_from_github() also does additional remote and
 branch setup, leaving you in the perfect position to make a pull request with
 pr_init(), one of several functions that work pull requests.
-create_from_github() works best when we can find a GitHub personal access
-token in the Git credential store (just like many other usethis functions).
-See gh_token_help() for more advice." />
+create_from_github() works best when your GitHub credentials are
+discoverable. See below for more about authentication." />
 <meta property="og:image" content="https://usethis.r-lib.org/logo.png" />
+
+
 
 
 
@@ -88,9 +89,15 @@ See gh_token_help() for more advice." />
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -104,7 +111,7 @@ See gh_token_help() for more advice." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">usethis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1.9000</span>
       </span>
     </div>
 
@@ -146,6 +153,9 @@ See gh_token_help() for more advice." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
+      <a href="https://www.tidyverse.org/blog/2020/12/usethis-2-0-0/">usethis 2.0.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">usethis 1.6.0</a>
     </li>
     <li>
@@ -167,7 +177,7 @@ See gh_token_help() for more advice." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/usethis/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -202,12 +212,11 @@ either cloning or
 fork-and-clone case, <code>create_from_github()</code> also does additional remote and
 branch setup, leaving you in the perfect position to make a pull request with
 <code><a href='pull-requests.html'>pr_init()</a></code>, one of several <a href='pull-requests.html'>functions that work pull requests</a>.</p>
-<p><code>create_from_github()</code> works best when we can find a GitHub personal access
-token in the Git credential store (just like many other usethis functions).
-See <code><a href='github-token.html'>gh_token_help()</a></code> for more advice.</p>
+<p><code>create_from_github()</code> works best when your GitHub credentials are
+discoverable. See below for more about authentication.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_from_github</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>create_from_github</span><span class='op'>(</span>
   <span class='va'>repo_spec</span>,
   destdir <span class='op'>=</span> <span class='cn'>NULL</span>,
   fork <span class='op'>=</span> <span class='cn'>NA</span>,
@@ -217,7 +226,7 @@ See <code><a href='github-token.html'>gh_token_help()</a></code> for more advice
   host <span class='op'>=</span> <span class='cn'>NULL</span>,
   auth_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Deprecated.html'>deprecated</a></span><span class='op'>(</span><span class='op'>)</span>,
   credentials <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Deprecated.html'>deprecated</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -240,7 +249,7 @@ also a project and Git repo.</p></td>
       <td><p>The new folder is stored here. If <code>NULL</code>, defaults to user's
 Desktop or some other conspicuous place. You can also set a default
 location using the option <code>usethis.destdir</code>, e.g.
-<code><a href='https://rdrr.io/r/base/options.html'>options(usethis.destdir = "a/good/dir")</a></code>, perhaps saved to your
+<code>options(usethis.destdir = "a/good/dir")</code>, perhaps saved to your
 <code>.Rprofile</code> with <code><a href='edit.html'>edit_r_profile()</a></code></p></td>
     </tr>
     <tr>
@@ -290,60 +299,50 @@ acceptable.</p></td>
     </tr>
     <tr>
       <th>auth_token</th>
-      <td><p><img src='figures/lifecycle-defunct.svg' alt='Defunct lifecycle' />
-: No longer consulted now
-that usethis uses the gert package for Git operations, instead of git2r;
-gert relies on the credentials package for auth. The API requests are now
-authorized with the token associated with the <code>host</code>, as retrieved by
-<code><a href='https://gh.r-lib.org/reference/gh_token.html'>gh::gh_token()</a></code>.</p></td>
+      <td><p><a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a>: No longer
+consulted now that usethis uses the gert package for Git operations,
+instead of git2r; gert relies on the credentials package for auth. The API
+requests are now authorized with the token associated with the <code>host</code>, as
+retrieved by <code><a href='https://gh.r-lib.org/reference/gh_token.html'>gh::gh_token()</a></code>.</p></td>
     </tr>
     <tr>
       <th>credentials</th>
-      <td><p><img src='figures/lifecycle-defunct.svg' alt='Defunct lifecycle' />
-: No longer consulted now
-that usethis uses the gert package for Git operations, instead of git2r;
-gert relies on the credentials package for auth. The API requests are now
-authorized with the token associated with the <code>host</code>, as retrieved by
-<code><a href='https://gh.r-lib.org/reference/gh_token.html'>gh::gh_token()</a></code>.</p></td>
+      <td><p><a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a>: No longer
+consulted now that usethis uses the gert package for Git operations,
+instead of git2r; gert relies on the credentials package for auth. The API
+requests are now authorized with the token associated with the <code>host</code>, as
+retrieved by <code><a href='https://gh.r-lib.org/reference/gh_token.html'>gh::gh_token()</a></code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="authentication"><a class="anchor" href="#authentication"></a>Authentication</h2>
+    <h2 class="hasAnchor" id="git-github-authentication"><a class="anchor" href="#git-github-authentication"></a>Git/GitHub Authentication</h2>
 
     
 
-<p>This function potentially interacts with GitHub in two different ways:</p><ul>
-<li><p>via the GitHub REST API</p></li>
-<li><p>as a conventional Git remote</p></li>
+<p>Many usethis functions, including those documented here, potentially interact
+with GitHub in two different ways:</p><ul>
+<li><p>Via the GitHub REST API. Examples: create a repo, a fork, or a pull
+request.</p></li>
+<li><p>As a conventional Git remote. Examples: clone, fetch, or push.</p></li>
 </ul>
 
-<p>Therefore two types of auth happen.</p>
-<p>To create a new repo on GitHub, we <strong>must</strong> call the GitHub REST API, i.e.
-this isn't one of the standard remote Git operations. Therefore you must make
-a GitHub personal access token (PAT) available. See <code><a href='github-token.html'>gh_token_help()</a></code> for
-advice on getting and storing your token.</p>
-<p>When we clone or pull from GitHub or push to it, depending on the protocol
-(HTTPS vs. SSH) and the privacy of the repo, we may also need regular Git
-credentials, just like we'd need with command line Git.</p>
-<p>We highly recommend using the HTTPS protocol, unless you have a specific
-preference for SSH. If you are an "HTTPS person", your GitHub PAT (see above)
-can also be used to authorize standard Git remote operations. Therefore, once
-you've configured your PAT, your setup is complete!</p>
-<p>But what if you prefer the SSH protocol? usethis uses the gert package for
-Git operations and gert, in turn, relies on the credentials package for auth:</p><ul>
-<li><p><a href='https://docs.ropensci.org/gert'>https://docs.ropensci.org/gert</a></p></li>
-<li><p><a href='https://docs.ropensci.org/credentials/'>https://docs.ropensci.org/credentials/</a></p></li>
+<p>Therefore two types of auth can happen and your credentials must be
+discoverable. Which credentials do we mean?</p><ul>
+<li><p>A GitHub personal access token (PAT) must be discoverable by the gh
+package, which is used for GitHub operations via the REST API. See
+<code><a href='github-token.html'>gh_token_help()</a></code> for more about getting and configuring a PAT.</p></li>
+<li><p>If you use the HTTPS protocol for Git remotes, your PAT is also used for
+Git operations, such as <code>git push</code>. Usethis uses the gert package for this,
+so the PAT must be discoverable by gert. Generally gert and gh will
+discover and use the same PAT. This ability to "kill two birds with one
+stone" is why HTTPS + PAT is our recommended auth strategy for those new
+to Git and GitHub and PRs.</p></li>
+<li><p>If you use SSH remotes, your SSH keys must also be discoverable, in
+addition to your PAT. The public key must be added to your GitHub account.</p></li>
 </ul>
 
-<p>In usethis v2.0.0, we switched from git2r to gert + credentials. The main
-motivation is to provide a smoother user experience by discovering and using
-the same credentials as command line Git (and, therefore, the same as
-RStudio). The credentials package <em>should</em> automatically discover your SSH
-keys. This works so well that we have removed all credential-handling
-workarounds from usethis. If you have credential problems, focus your
-troubleshooting on getting the credentials package to find your SSH keys. Its
-<a href='https://cran.r-project.org/web/packages/credentials/vignettes/intro.html'>introductory vignette</a>
-is a good place to start.</p>
+<p>Git/GitHub credential management is covered in a dedicated article:
+<a href='https://usethis.r-lib.org/articles/articles/git-credentials.html'>Managing Git(Hub) Credentials</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
@@ -357,16 +356,16 @@ without the need for any local or remote Git operations</p></li>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>create_from_github</span><span class='op'>(</span><span class='st'>"r-lib/usethis"</span><span class='op'>)</span>
-
-<span class='co'># repo_spec can be a URL</span>
-<span class='fu'>create_from_github</span><span class='op'>(</span><span class='st'>"https://github.com/r-lib/usethis"</span><span class='op'>)</span>
-
-<span class='co'># a URL repo_spec also specifies the host (e.g. GitHub Enterprise instance)</span>
-<span class='fu'>create_from_github</span><span class='op'>(</span><span class='st'>"https://github.acme.com/OWNER/REPO"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>create_from_github</span><span class='op'>(</span><span class='st'>"r-lib/usethis"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># repo_spec can be a URL</span></span>
+<span class='r-in'><span class='fu'>create_from_github</span><span class='op'>(</span><span class='st'>"https://github.com/r-lib/usethis"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># a URL repo_spec also specifies the host (e.g. GitHub Enterprise instance)</span></span>
+<span class='r-in'><span class='fu'>create_from_github</span><span class='op'>(</span><span class='st'>"https://github.acme.com/OWNER/REPO"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -378,11 +377,11 @@ without the need for any local or remote Git operations</p></li>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://jennybryan.org'>Jennifer Bryan</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://jennybryan.org" class="external-link">Jennifer Bryan</a>, Malcolm Barrett, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -407,6 +406,8 @@ without the need for any local or remote Git operations</p></li>
 </script>
 
 
+
+  
 
   </body>
 </html>

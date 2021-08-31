@@ -68,6 +68,8 @@ back to this happy state." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -89,9 +91,15 @@ back to this happy state." />
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -105,7 +113,7 @@ back to this happy state." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">usethis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1.9000</span>
       </span>
     </div>
 
@@ -147,6 +155,9 @@ back to this happy state." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
+      <a href="https://www.tidyverse.org/blog/2020/12/usethis-2-0-0/">usethis 2.0.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">usethis 1.6.0</a>
     </li>
     <li>
@@ -168,7 +179,7 @@ back to this happy state." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/usethis/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -209,7 +220,7 @@ what's wrong or how to fix it. Usually, all three of these should coincide
 back to this happy state.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>proj_sitrep</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>proj_sitrep</span><span class='op'>(</span><span class='op'>)</span></code></pre></div>
 
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -223,12 +234,16 @@ RStudio Project</p>
 <code><a href='proj_utils.html'>proj_utils</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>proj_sitrep</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>●   working_directory: <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpSElmby/filea08181f7cb8/reference'</span><span></span></div><div class='output co'>#&gt; <span class='message'>● active_usethis_proj: </span><span style='color: #555555;'>&lt;unset&gt;</span><span></span></div><div class='output co'>#&gt; <span class='message'>● active_rstudio_proj: </span><span style='color: #555555;'>&lt;unset&gt;</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> There is currently no active usethis project.</span>
-#&gt; <span class='message'>  usethis attempts to activate a project upon first need.</span>
-#&gt; <span class='message'>  Call </span><span style='color: #555555;'>`proj_get()`</span><span> to initiate project discovery.</span>
-#&gt; <span class='message'>  Call </span><span style='color: #555555;'>`proj_set("path/to/project")`</span><span> or </span><span style='color: #555555;'>`proj_activate("path/to/project")`</span><span> to provide</span>
-#&gt; <span class='message'>  an explicit path.</span></div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>proj_sitrep</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> •   working_directory: <span style='color: #0000BB;'>'/tmp/RtmpLiABeN/file3e0636a2fd85/reference'</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> • active_usethis_proj: <span style='color: #555555;'>&lt;unset&gt;</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> • active_rstudio_proj: <span style='color: #555555;'>&lt;unset&gt;</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>•</span> There is currently no active usethis project.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   usethis attempts to activate a project upon first need.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   Call <span style='color: #555555;'>`proj_get()`</span> to initiate project discovery.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   Call <span style='color: #555555;'>`proj_set("path/to/project")`</span> or <span style='color: #555555;'>`proj_activate("path/to/project")`</span> to provide</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   an explicit path.</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -240,11 +255,11 @@ RStudio Project</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://jennybryan.org'>Jennifer Bryan</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://jennybryan.org" class="external-link">Jennifer Bryan</a>, Malcolm Barrett, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -269,6 +284,8 @@ RStudio Project</p>
 </script>
 
 
+
+  
 
   </body>
 </html>

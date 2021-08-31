@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Continuous integration setup and badges — ci • usethis</title>
+<title>Import a function from another package — use_import_from • usethis</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,20 +52,15 @@
 
 
 
-<meta property="og:title" content="Continuous integration setup and badges — ci" />
-<meta property="og:description" content="
-Some of these functions are now soft-deprecated since the tidyverse team has
-started using GitHub Actions (GHA) for
-continuous integration (CI). See use_github_actions() for help configuring
-GHA. GHA functionality in usethis is actively maintained and exercised, which
-is no longer true for Travis-CI or AppVeyor.
-Sets up third-party continuous integration (CI) services for an R package
-that is developed on GitHub or, perhaps, GitLab. These functions
-Add service-specific configuration files and add them to .Rbuildignore.
-Activate a service or give the user a detailed prompt.
-Provide the markdown to insert a badge into README.
-
-" />
+<meta property="og:title" content="Import a function from another package — use_import_from" />
+<meta property="og:description" content="use_import_from() imports a function from another package by adding the
+roxygen2 @importFrom tag to the package-level documentation (which can be
+created with use_package_doc()). Importing a function from another
+package allows you to refer to it without a namespace (e.g., fun() instead
+of package::fun()).
+use_import_from() also re-documents the NAMESPACE, and re-load the current
+package. This ensures that fun is immediately available in your development
+session." />
 <meta property="og:image" content="https://usethis.r-lib.org/logo.png" />
 
 
@@ -205,116 +200,50 @@ Provide the markdown to insert a badge into README.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Continuous integration setup and badges</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/usethis/blob/master/R/ci.R'><code>R/ci.R</code></a></small>
-    <div class="hidden name"><code>ci.Rd</code></div>
+    <h1>Import a function from another package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/usethis/blob/master/R/use_import_from.R'><code>R/use_import_from.R</code></a></small>
+    <div class="hidden name"><code>use_import_from.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a></p>
-<p>Some of these functions are now soft-deprecated since the tidyverse team has
-started using <a href='https://github.com/features/actions'>GitHub Actions (GHA)</a> for
-continuous integration (CI). See <code><a href='github_actions.html'>use_github_actions()</a></code> for help configuring
-GHA. GHA functionality in usethis is actively maintained and exercised, which
-is no longer true for Travis-CI or AppVeyor.</p>
-<p>Sets up third-party continuous integration (CI) services for an R package
-that is developed on GitHub or, perhaps, GitLab. These functions</p><ul>
-<li><p>Add service-specific configuration files and add them to <code>.Rbuildignore</code>.</p></li>
-<li><p>Activate a service or give the user a detailed prompt.</p></li>
-<li><p>Provide the markdown to insert a badge into README.</p></li>
-</ul>
-
+    <p><code>use_import_from()</code> imports a function from another package by adding the
+roxygen2 <code>@importFrom</code> tag to the package-level documentation (which can be
+created with <code><a href='use_package_doc.html'>use_package_doc()</a></code>). Importing a function from another
+package allows you to refer to it without a namespace (e.g., <code>fun()</code> instead
+of <code>package::fun()</code>).</p>
+<p><code>use_import_from()</code> also re-documents the NAMESPACE, and re-load the current
+package. This ensures that <code>fun</code> is immediately available in your development
+session.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>use_travis</span><span class='op'>(</span>browse <span class='op'>=</span> <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span><span class='op'>(</span><span class='op'>)</span>, ext <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"com"</span>, <span class='st'>"org"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>use_travis_badge</span><span class='op'>(</span>ext <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"com"</span>, <span class='st'>"org"</span><span class='op'>)</span>, repo_spec <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>use_appveyor</span><span class='op'>(</span>browse <span class='op'>=</span> <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>use_appveyor_badge</span><span class='op'>(</span>repo_spec <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>use_gitlab_ci</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>use_circleci</span><span class='op'>(</span>browse <span class='op'>=</span> <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span><span class='op'>(</span><span class='op'>)</span>, image <span class='op'>=</span> <span class='st'>"rocker/verse:latest"</span><span class='op'>)</span>
-
-<span class='fu'>use_circleci_badge</span><span class='op'>(</span>repo_spec <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>use_import_from</span><span class='op'>(</span><span class='va'>package</span>, <span class='va'>fun</span>, load <span class='op'>=</span> <span class='fu'>is_interactive</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>browse</th>
-      <td><p>Open a browser window to enable automatic builds for the
-package.</p></td>
+      <th>package</th>
+      <td><p>Package name</p></td>
     </tr>
     <tr>
-      <th>ext</th>
-      <td><p>Which travis website to use. Defaults to <code>"com"</code> for
-https://travis-ci.com. Change to <code>"org"</code> for https://travis-ci.org.</p></td>
+      <th>fun</th>
+      <td><p>A vector of function names</p></td>
     </tr>
     <tr>
-      <th>repo_spec</th>
-      <td><p>Optional GitHub repo specification in this form: <code>owner/repo</code>. This can usually be inferred from the GitHub remotes of active project.</p></td>
-    </tr>
-    <tr>
-      <th>image</th>
-      <td><p>The Docker image to use for build. Must be available on
-<a href='https://hub.docker.com'>DockerHub</a>. The
-<a href='https://hub.docker.com/r/rocker/verse'>rocker/verse</a> image includes
-TeXLive, pandoc, and the tidyverse packages. For a minimal image, try
-<a href='https://hub.docker.com/r/rocker/r-ver'>rocker/r-ver</a>. To specify a version
-of R, change the tag from <code>latest</code> to the version you want, e.g.
-<code>rocker/r-ver:3.5.3</code>.</p></td>
+      <th>load</th>
+      <td><p>Logical. Re-load with <code><a href='https://rdrr.io/pkg/pkgload/man/load_all.html'>pkgload::load_all()</a></code>?</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="use-travis-"><a class="anchor" href="#use-travis-"></a><code>use_travis()</code></h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
+    <p>Invisibly, <code>TRUE</code> if the package document has changed, <code>FALSE</code> if not.</p>
 
-<p>Adds a basic <code>.travis.yml</code> to the top-level directory of a package. This is a
-configuration file for the <a href='https://travis-ci.com/'>Travis CI</a> continuous
-integration service.</p>
-    <h2 class="hasAnchor" id="use-travis-badge-"><a class="anchor" href="#use-travis-badge-"></a><code>use_travis_badge()</code></h2>
-
-    
-
-<p>Only adds the <a href='https://travis-ci.com/'>Travis CI</a> badge. Use for a project
-where Travis is already configured.</p>
-    <h2 class="hasAnchor" id="use-appveyor-"><a class="anchor" href="#use-appveyor-"></a><code>use_appveyor()</code></h2>
-
-    
-
-<p>Adds a basic <code>appveyor.yml</code> to the top-level directory of a package. This is
-a configuration file for the <a href='https://www.appveyor.com'>AppVeyor</a> continuous
-integration service for Windows.</p>
-    <h2 class="hasAnchor" id="use-appveyor-badge-"><a class="anchor" href="#use-appveyor-badge-"></a><code>use_appveyor_badge()</code></h2>
-
-    
-
-<p>Only adds the <a href='https://www.appveyor.com'>AppVeyor</a> badge. Use for a project
-where AppVeyor is already configured.</p>
-    <h2 class="hasAnchor" id="use-gitlab-ci-"><a class="anchor" href="#use-gitlab-ci-"></a><code>use_gitlab_ci()</code></h2>
-
-    
-
-<p>Adds a basic <code>.gitlab-ci.yml</code> to the top-level directory of a package. This
-is a configuration file for the <a href='https://docs.gitlab.com/ee/ci/'>GitLab CI/CD</a> continuous integration service.</p>
-    <h2 class="hasAnchor" id="use-circleci-"><a class="anchor" href="#use-circleci-"></a><code>use_circleci()</code></h2>
-
-    
-
-<p>Adds a basic <code>.circleci/config.yml</code> to the top-level directory of a package.
-This is a configuration file for the <a href='https://circleci.com/'>CircleCI</a>
-continuous integration service.</p>
-    <h2 class="hasAnchor" id="use-circleci-badge-"><a class="anchor" href="#use-circleci-badge-"></a><code>use_circleci_badge()</code></h2>
-
-    
-
-<p>Only adds the <a href='https://circleci.com/'>Circle CI</a> badge. Use for a project
-where Circle CI is already configured.</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>use_import_from</span><span class='op'>(</span><span class='st'>"usethis"</span>, <span class='st'>"ui_todo"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -55,8 +55,12 @@
 <meta property="og:title" content="Open file for editing — edit_file" />
 <meta property="og:description" content="Opens a file for editing in RStudio, if that is the active environment, or
 via utils::file.edit() otherwise. If the file does not exist, it is
-created. If the parent directory does not exist, it is also created." />
+created. If the parent directory does not exist, it is also created.
+edit_template() specifically opens templates in inst/templates for use
+with use_template()." />
 <meta property="og:image" content="https://usethis.r-lib.org/logo.png" />
+
+
 
 
 
@@ -82,9 +86,15 @@ created. If the parent directory does not exist, it is also created." />
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -98,7 +108,7 @@ created. If the parent directory does not exist, it is also created." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">usethis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1.9000</span>
       </span>
     </div>
 
@@ -140,6 +150,9 @@ created. If the parent directory does not exist, it is also created." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
+      <a href="https://www.tidyverse.org/blog/2020/12/usethis-2-0-0/">usethis 2.0.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">usethis 1.6.0</a>
     </li>
     <li>
@@ -161,7 +174,7 @@ created. If the parent directory does not exist, it is also created." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/usethis/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -192,10 +205,14 @@ created. If the parent directory does not exist, it is also created." />
     <div class="ref-description">
     <p>Opens a file for editing in RStudio, if that is the active environment, or
 via <code><a href='https://rdrr.io/r/utils/file.edit.html'>utils::file.edit()</a></code> otherwise. If the file does not exist, it is
-created. If the parent directory does not exist, it is also created.</p>
+created. If the parent directory does not exist, it is also created.
+<code>edit_template()</code> specifically opens templates in <code>inst/templates</code> for use
+with <code><a href='use_template.html'>use_template()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>edit_file</span><span class='op'>(</span><span class='va'>path</span>, open <span class='op'>=</span> <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>edit_file</span><span class='op'>(</span><span class='va'>path</span>, open <span class='op'>=</span> <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>edit_template</span><span class='op'>(</span>template <span class='op'>=</span> <span class='cn'>NULL</span>, open <span class='op'>=</span> <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,6 +225,11 @@ created. If the parent directory does not exist, it is also created.</p>
       <th>open</th>
       <td><p>Whether to open the file for interactive editing.</p></td>
     </tr>
+    <tr>
+      <th>template</th>
+      <td><p>The target template file. If not specified, existing template
+files are offered for interactive selection.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -215,11 +237,11 @@ created. If the parent directory does not exist, it is also created.</p>
     <p>Target path, invisibly.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>edit_file</span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span><span class='op'>)</span>
-<span class='fu'>edit_file</span><span class='op'>(</span><span class='st'>"~/.gitconfig"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>edit_file</span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>edit_file</span><span class='op'>(</span><span class='st'>"~/.gitconfig"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -231,11 +253,11 @@ created. If the parent directory does not exist, it is also created.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://jennybryan.org'>Jennifer Bryan</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://jennybryan.org" class="external-link">Jennifer Bryan</a>, Malcolm Barrett, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -260,6 +282,8 @@ created. If the parent directory does not exist, it is also created.</p>
 </script>
 
 
+
+  
 
   </body>
 </html>
